@@ -1,4 +1,5 @@
 import pandas as pd
+
 import numpy as np
 from sklearn.datasets import fetch_20newsgroups
 from sklearn.feature_extraction.text import CountVectorizer
@@ -12,20 +13,24 @@ learn_df = reviewDataframe.iloc[:4000]
 test_df = reviewDataframe.iloc[4000:]
 
 text_clf = Pipeline([
-        ('vect', CountVectorizer()),
-        ('tfidf', TfidfTransformer()),
-        ('clf', MultinomialNB()),
-    ])
+    ('vect', CountVectorizer()),
+    ('tfidf', TfidfTransformer()),
+    ('clf', MultinomialNB()),
+])
 text_clf.fit(learn_df.Review, learn_df.Review_Consensus)
+
 
 def naiveBayesPredictions():
     predicted = text_clf.predict(test_df.Review)
-    print('The Naive Bayes classifier got an accuracy of',np.mean(predicted == test_df.Review_Consensus)*100, '% over the test data.')
+    print('The Naive Bayes classifier got an accuracy of',
+          np.mean(predicted == test_df.Review_Consensus)*100, '% over the test data.')
+
 
 def naiveBayesPredictionsScrapedData():
     predicted = text_clf.predict(scrapedDataframe.Review)
     print('The scraped reviews contain {}% positive and {}% negative reviews.'.format(
         np.mean(predicted == 'positive')*100, np.mean(predicted == 'negative')*100))
+
 
 def predictSingleReview(review):
     singlePredict = text_clf.predict(review)

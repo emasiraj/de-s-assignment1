@@ -47,7 +47,8 @@ def predictConsensusScrapedData(neighbors):
 
 predictionsPercentages = {x: predictConsensus(x, test_df.Review) for x in range(30, 66)}
 print('Between 30 and 100 nearest neighbour, the highest accuracy n is {} with an accuracy of {} %.'.format(
-    max(predictionsPercentages, key=predictionsPercentages.get), predictionsPercentages[max(predictionsPercentages, key=predictionsPercentages.get)]
+    max(predictionsPercentages, key=predictionsPercentages.get), 
+    predictionsPercentages[max(predictionsPercentages, key=predictionsPercentages.get)]
 ))
 
 # review = ['The view was amazing, but that’s about it. Food was terrible!!!My risotto was raw which I told the waiter but I still got charged. For the dessert I have ordered a cake which came from the fridge still frozen. The prices are ridiculous and the food very poor! It ruined our evening and I went to sleep hungry.']
