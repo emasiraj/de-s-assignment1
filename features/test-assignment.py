@@ -5,7 +5,7 @@ from selenium.webdriver.chrome.options import Options
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
-options.add_argument("--remote-debugging-port=9222")
+options.add_argument("--disable-dev-shm-usage")
 driver = webdriver.Chrome()
 
 @after.each_step
