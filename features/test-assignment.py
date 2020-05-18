@@ -8,7 +8,8 @@ options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--remote-debugging-port=9222")
-driver = os.path.join("/usr/local/bin/","chromedriver")
+chromedriver = os.path.join("/usr/local/bin/","chromedriver")
+driver = webdriver.Chrome(executable_path=chromedriver,chrome_options=options)
 
 @after.each_step
 def wait_for_page_to_load(step):
