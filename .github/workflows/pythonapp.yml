@@ -37,12 +37,11 @@ jobs:
           && sudo mv chromedriver /usr/local/bin/chromedriver \
           && sudo chmod +x /usr/local/bin/chromedriver \
           && chromedriver --version
-        sudo curl -sS -o - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add
-        sudo echo "deb [arch=amd64]  http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list
-        sudo apt-get -y update
-        sudo apt-get -y install google-chrome-stable
-        wget https://chromedriver.storage.googleapis.com/2.41/chromedriver_linux64.zip
-        unzip chromedriver_linux64.zip
+    - uses: nanasess/setup-chromedriver@master
+    - run: |
+        export DISPLAY=:99
+        chromedriver --url-base=/wd/hub &
+        sudo Xvfb -ac :99 -screen 0 1280x1024x24 > /dev/null 2>&1 & # optional
     - name: Lint with flake8
       run: |
         # stop the build if there are Python syntax errors or undefined names
