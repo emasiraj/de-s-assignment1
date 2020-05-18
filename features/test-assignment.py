@@ -2,12 +2,13 @@ from aloe import step, after
 from selenium import webdriver
 import time
 from selenium.webdriver.chrome.options import Options
+import os
 
 options = webdriver.ChromeOptions()
 options.add_argument('headless')
 options.add_argument("--disable-dev-shm-usage")
 options.add_argument("--remote-debugging-port=9222")
-driver = webdriver.Chrome()
+driver = os.path.join("/usr/local/bin/","chromedriver")
 
 @after.each_step
 def wait_for_page_to_load(step):
