@@ -7,4 +7,4 @@ Feature: Bootcamp Assignment
     
     Scenario: Verify jiskefet log content
         When I click on the first log entry
-        Then I see the first log is written by Batman
+        Then I see the first log is written by John Doe
