@@ -1,7 +1,10 @@
 from aloe import step, after
 from selenium import webdriver
 import time
+from selenium.webdriver.chrome.options import Options
 
+options = webdriver.ChromeOptions()
+options.add_argument('headless')
 driver = webdriver.Chrome()
 
 @after.each_step
